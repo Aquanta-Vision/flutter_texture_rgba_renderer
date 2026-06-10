@@ -13,7 +13,12 @@ TextureRgba::TextureRgba(flutter::TextureRegistrar *texture_registrar)
 
 TextureRgba::~TextureRgba()
 {
-	texture_registrar_->UnregisterTexture(texture_id_);
+	// Unregistration is handled by the plugin through the asynchronous
+	// TextureRegistrar::UnregisterTexture overload before destruction.
+	// The blocking single-argument overload previously used here parks the
+	// platform thread on a latch waiting for the raster thread and can
+	// deadlock the whole app; it also double-unregistered the texture when
+	// closeTexture had already unregistered it.
 }
 
 void TextureRgba::switch_rgba(std::vector<uint8_t> &buffer, size_t height)

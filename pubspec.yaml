@@ -1,7 +1,7 @@
 name: texture_rgba_renderer
 description: A texture helper which brings a high level api to handle BGRA data.
-version: 0.0.16
-homepage: https://github.com/Kingtous/flutter_texture_rgba_renderer
+version: 0.0.17
+homepage: https://github.com/Aquanta-Vision/flutter_texture_rgba_renderer
 
 environment:
   sdk: '>=2.17.0 <3.0.0'

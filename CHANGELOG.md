@@ -1,3 +1,8 @@
+## 0.0.17 (Aquanta-Vision fork)
+* fix: Windows `closeTexture` used the blocking `UnregisterTexture` overload on the platform thread, which could deadlock the whole app; now unregisters asynchronously and keeps the texture alive until the engine confirms.
+* fix: Windows `TextureRgba` destructor no longer unregisters a second time.
+* fix: Windows `createTexture` with an existing key never completed its result (hanging the Dart future); it now replaces the old texture and returns the new id.
+
 ## 0.0.16
 * opt: remove unneeded len check on Linux.
 
